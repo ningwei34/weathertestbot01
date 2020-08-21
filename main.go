@@ -68,6 +68,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				resp, _ := http.Get("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-5F85416B-D61B-4976-A1D3-47E14DE7B40A&locationName=%E8%87%BA%E5%8C%97%E5%B8%82")
 				defer resp.Body.Close()              //關閉連線
 				body, _ := ioutil.ReadAll(resp.Body) //讀取body的內容
+				fmt.Println(decoding(body))
 
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text+"回覆:\n"+decoding(body))).Do(); err != nil {
 					log.Print(err)
