@@ -78,7 +78,7 @@ const (
 type Client struct {
 	channelSecret    string
 	channelToken     string
-	endpointBase     *url.URL     // default APIEndpointBase
+	endpointBase     *url.URL     // default API Endpoint Base
 	endpointBaseData *url.URL     // default APIEndpointBaseData
 	httpClient       *http.Client // default http.DefaultClient
 }
