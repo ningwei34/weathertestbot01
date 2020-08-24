@@ -46,6 +46,10 @@ func main() {
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)
+	fmt.Println(bot.GetGroupMemberProfile)
+	fmt.Println(bot.IssueAccessToken)
+	fmt.Println(bot.GetGroupMemberIDs)
+
 }
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
