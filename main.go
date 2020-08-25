@@ -71,7 +71,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				body, _ := ioutil.ReadAll(resp.Body) //讀取body的內容
 				fmt.Println(decoding(body))
 
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text+"回覆:\n"+decoding(body))).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text+"回覆:\n"+decoding(body)+event.Source.UserID)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
@@ -85,10 +85,6 @@ func decoding(b []byte) string {
 	json.Unmarshal([]byte(b), &t)
 	var weatherState string = ""
 	nowWeather := t.Records.Location[0].WeatherElement
-
-	fmt.Println(bot.GetGroupMemberProfile)
-	fmt.Println(bot.IssueAccessToken)
-	fmt.Println(bot.GetGroupMemberIDs)
 
 	for _, i := range nowWeather {
 		if i.ElementValue != "-99" {
@@ -136,4 +132,9 @@ func decoding(b []byte) string {
 	getTime := t.Records.Location[0].Time.ObsTime
 	weatherState += getTime[0 : len([]rune(getTime))-3]
 	return weatherState
+
+	// fmt.Println(bot.GetGroupMemberProfile)
+	// fmt.Println(bot.IssueAccessToken)
+	// fmt.Println(bot.GetGroupMemberIDs)
+
 }
