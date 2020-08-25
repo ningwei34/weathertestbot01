@@ -46,9 +46,6 @@ func main() {
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)
-	fmt.Println(bot.GetGroupMemberProfile)
-	fmt.Println(bot.IssueAccessToken)
-	fmt.Println(bot.GetGroupMemberIDs)
 
 }
 
@@ -88,6 +85,10 @@ func decoding(b []byte) string {
 	json.Unmarshal([]byte(b), &t)
 	var weatherState string = ""
 	nowWeather := t.Records.Location[0].WeatherElement
+
+	fmt.Println(bot.GetGroupMemberProfile)
+	fmt.Println(bot.IssueAccessToken)
+	fmt.Println(bot.GetGroupMemberIDs)
 
 	for _, i := range nowWeather {
 		if i.ElementValue != "-99" {
