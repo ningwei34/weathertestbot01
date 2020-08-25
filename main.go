@@ -71,7 +71,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				body, _ := ioutil.ReadAll(resp.Body) //讀取body的內容
 				fmt.Println(decoding(body))
 
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("Hello"+message.Text+"\n"+decoding(body)+"\n"+event.Source.UserID)).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("Hello"+message.Text+"\n"+"你現在在高雄？很熱捏\n"+decoding(body)+"\n"+event.Source.UserID)).Do(); err != nil {
 					log.Print(err)
 				}
 			}
